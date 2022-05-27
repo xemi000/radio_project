@@ -70,8 +70,6 @@ class PlayerProvider with ChangeNotifier {
     _audioPlayer.onPlayerStateChanged.listen((AudioPlayerState state) async {
       print("Flutter : state : " + state.toString());
       if (state == AudioPlayerState.PLAYING) {
-        //updatePlayerState(RadioPlayerState.PLAYING);
-        //notifyListeners();
       } else if (state == AudioPlayerState.STOPPED ||
           state == AudioPlayerState.COMPLETED) {
         updatePlayerState(RadioPlayerState.STOPPED);
@@ -90,7 +88,6 @@ class PlayerProvider with ChangeNotifier {
       updatePlayerState(RadioPlayerState.STOPPED);
       await _audioPlayer.stop();
     }
-    //await _audioPlayer.dispose();
   }
 
   bool isPlaying() {

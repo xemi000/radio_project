@@ -1,6 +1,6 @@
-import 'package:Radios/pages/genre.dart';
+//import 'package:Radios/pages/genre.dart';
 import 'package:flutter/material.dart';
-import 'package:hexcolor/hexcolor.dart';
+//import 'package:hexcolor/hexcolor.dart';
 
 const avatarImageRadius = 60.0;
 
@@ -19,6 +19,7 @@ class _SmartScreenState extends State<SmartScreen> {
         ),
         backgroundColor: Color.fromARGB(227, 255, 229, 236),
         centerTitle: true,
+        toolbarHeight: 28,
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -68,20 +69,12 @@ class _SmartScreenState extends State<SmartScreen> {
                   SizedBox(
                     width: 45,
                   ),
-                  GestureDetector(
-                    child: Expanded(
-                      child: Container(
-                          child: Text(
-                        'Rock',
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                      )),
-                    ),
-                    onTap: () => Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => Genre(
-                                  isFavouriteOnly: false,
-                                ))),
+                  Expanded(
+                    child: Container(
+                        child: Text(
+                      'Rock',
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    )),
                   ),
                   Expanded(
                     child: Container(

@@ -1,7 +1,5 @@
-//import 'package:Radios/pages/genre.dart';
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
-//import 'package:Radios/pages/genre.dart';
 import 'fav_radios_page.dart';
 import 'radio_page.dart';
 import 'smart_screen.dart';
@@ -63,7 +61,6 @@ class _HomePageState extends State<HomePage> {
   }
 
   void onTabTapped(int index) {
-    // Error : setState method called after dispose()?
     if (!mounted) return;
     setState(() {
       _currentIndex = index;

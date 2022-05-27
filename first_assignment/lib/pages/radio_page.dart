@@ -1,10 +1,7 @@
 import 'dart:async';
-
-import 'package:Radios/pages/fav_radios_page.dart';
 import 'package:Radios/pages/smart_screen.dart';
-import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
-import 'package:hexcolor/hexcolor.dart';
+
 import 'package:provider/provider.dart';
 import 'package:Radios/models/radio.dart';
 import 'package:Radios/services/player_provider.dart';
@@ -25,7 +22,7 @@ class RadioPage extends StatefulWidget {
 class _RadioPageState extends State<RadioPage> {
   final _searchQuery = new TextEditingController();
   Timer _debounce;
-  AudioPlayer _audioPlayer;
+  //AudioPlayer _audioPlayer;
 
   @override
   void initState() {
@@ -38,17 +35,6 @@ class _RadioPageState extends State<RadioPage> {
 
     _searchQuery.addListener(_onSearchChanged);
   }
-
-  // void _initAudioPlayer() {
-  //   var audioPlayerBloc = Provider.of<PlayerProvider>(context, listen: false);
-
-  //   if (audioPlayerBloc.getPlayerState() == RadioPlayerState.STOPPED) {
-  //     _audioPlayer = new AudioPlayer();
-  //   } else {
-  //     _audioPlayer =
-  //         Provider.of<PlayerProvider>(context, listen: false).getAudioPlayer();
-  //   }
-  // }
 
   _onSearchChanged() {
     var radiosBloc = Provider.of<PlayerProvider>(context, listen: false);
@@ -78,7 +64,6 @@ class _RadioPageState extends State<RadioPage> {
           children: [
             _appBar(),
             _appLogo(),
-            //_searchBar(),
             sections(),
             _radiosList(),
             _nowPlaying()
@@ -96,6 +81,7 @@ class _RadioPageState extends State<RadioPage> {
       backgroundColor: Color.fromARGB(227, 255, 229, 236),
       centerTitle: true,
       elevation: 0,
+      toolbarHeight: 28,
     );
   }
 
@@ -135,35 +121,6 @@ class _RadioPageState extends State<RadioPage> {
           indent: 0,
         ),
       ],
-    );
-  }
-
-  Widget _searchBar() {
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 2),
-      margin: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(10),
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Icon(Icons.search),
-          new Flexible(
-            child: new TextField(
-              cursorColor: Colors.black,
-              decoration: InputDecoration(
-                border: InputBorder.none,
-                contentPadding: EdgeInsets.all(5),
-                hintText: 'Search Radio',
-              ),
-              controller: _searchQuery,
-            ),
-          ),
-          Spacer(),
-        ],
-      ),
     );
   }
 
@@ -319,35 +276,4 @@ class _RadioPageState extends State<RadioPage> {
       ),
     );
   }
-
-  // Widget _radiosList() {
-  //   return new FutureBuilder(
-  //     future: DBDownloadService.fetchLocalDB(),
-  //     builder: (BuildContext context, AsyncSnapshot<List<RadioModel>> radios) {
-  //       if (radios.hasData) {
-  //         return new Expanded(
-  //           child: Padding(
-  //             child: ListView(
-  //               children: <Widget>[
-  //                 ListView.separated(
-  //                     itemCount: radios.data.length,
-  //                     physics: ScrollPhysics(),
-  //                     shrinkWrap: true,
-  //                     itemBuilder: (context, index) {
-  //                       return RadioRowTemplate(radioModel: radios.data[index]);
-  //                     },
-  //                     separatorBuilder: (context, index) {
-  //                       return Divider();
-  //                     })
-  //               ],
-  //             ),
-  //             padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
-  //           ),
-  //         );
-  //       }
-
-  //       return CircularProgressIndicator();
-  //     },
-  //   );
-  // }
 }

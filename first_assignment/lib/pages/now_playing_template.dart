@@ -78,7 +78,7 @@ class NowPlayingTemplate extends StatelessWidget {
             color: Colors.grey.withOpacity(0.5),
             spreadRadius: 1,
             blurRadius: 3,
-            offset: Offset(0, 3), // changes position of shadow
+            offset: Offset(0, 3),
           ),
         ],
       ),
@@ -94,14 +94,6 @@ class NowPlayingTemplate extends StatelessWidget {
       onPressed: () {
         playerProvider.stopRadio();
       },
-    );
-  }
-
-  Widget _buildShareIcon() {
-    return IconButton(
-      icon: Icon(Icons.share),
-      color: HexColor("#9097A6"),
-      onPressed: () {},
     );
   }
 }
